@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Form, Button, FloatingLabel1 } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
+import Spinner from 'react-bootstrap/Spinner';
 import './App.css';
 
 function App() {
 
+  const [isLoading, setIsLoading] = useState(false);
   const [probabilityA, setProbabilityA] = useState('');
   const [probabilityB, setProbabilityB] = useState('');
   const [selectedFunction, setSelectedFunction] = useState('');
@@ -19,6 +21,8 @@ function App() {
       return;
     }
 
+    setIsLoading(true)
+
     try {
       // send request to backend API
       const response = await axios.get(`https://d7bwnghnskth4e46j5t5bh4k740uiowv.lambda-url.eu-north-1.on.aws/Calculator?probabilityA=${probabilityA}&probabilityB=${probabilityB}&selectedFunction=${selectedFunction}`);
@@ -31,6 +35,16 @@ function App() {
     } catch (error) {
       console.error(error);
     }
+
+    setIsLoading(false)
+  }
+
+  if(isLoading){
+    return <div className='Spinner'>
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    </div> 
   }
 
   return (
