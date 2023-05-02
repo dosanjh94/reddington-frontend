@@ -1,0 +1,19 @@
+@import "bootstrap/dist/css/bootstrap.css";
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.Title {
+  text-align: center;
+  margin-top: 0;
+  padding-bottom: 1%;
+}
+
+.Body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
