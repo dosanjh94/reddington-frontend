@@ -21,7 +21,7 @@ function App() {
 
     try {
       // send request to backend API
-      const response = await axios.get(`https://localhost:7148/Calculator?probabilityA=${probabilityA}&probabilityB=${probabilityB}&selectedFunction=${selectedFunction}`);
+      const response = await axios.get(`https://d7bwnghnskth4e46j5t5bh4k740uiowv.lambda-url.eu-north-1.on.aws/Calculator?probabilityA=${probabilityA}&probabilityB=${probabilityB}&selectedFunction=${selectedFunction}`);
 
       // update the result
       setResult(response.data.result);
